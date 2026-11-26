@@ -136,8 +136,8 @@ private:
 
 #if defined(ESP_PLATFORM)
   static constexpr uint8_t kEastmeshBit = 0x01;
-  static constexpr uint8_t kLetsmeshEuBit = 0x02;
-  static constexpr uint8_t kLetsmeshUsBit = 0x04;
+  static constexpr uint8_t kMeshcoreCa1Bit = 0x02;
+  static constexpr uint8_t kMeshcoreCa2Bit = 0x04;
   static constexpr uint8_t kCustomBit = 0x08;
   static constexpr uint8_t kMeshmapperBit = 0x10;
   static constexpr uint8_t kWaevBit = 0x20;

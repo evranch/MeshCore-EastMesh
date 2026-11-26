@@ -132,11 +132,11 @@ const MQTTUplink::BrokerSpec MQTTUplink::kBrokerSpecs[kBrokerCount] = {
     {"meshmapper", "meshmapper", "mqtt.meshmapper.net", "wss://mqtt.meshmapper.net:443/mqtt", kMeshmapperBit, false, 0},
     // waev enforces a shorter max token lifetime than the curated default; match its documented config.
     {"waev", "waev", "mqtt.waev.app", "wss://mqtt.waev.app:443/mqtt", kWaevBit, false, 3600},
-    // Retired: LetsMesh is no longer maintained. Kept selectable for legacy nodes; new nodes should use meshmapper.
-    {"letsmesh-eu", "letsmesh-eu", "mqtt-eu-v1.letsmesh.net", "wss://mqtt-eu-v1.letsmesh.net:443/mqtt",
-     kLetsmeshEuBit, false, 0},
-    {"letsmesh-us", "letsmesh-us", "mqtt-us-v1.letsmesh.net", "wss://mqtt-us-v1.letsmesh.net:443/mqtt",
-     kLetsmeshUsBit, false, 0},
+    // Retired nodes swapped out for Meshcore Canada
+    {"meshcore-ca-1", "meshcore-ca-1", "mqtt1.meshcore.ca", "wss://mqtt1.meshcore.ca:443/mqtt",
+     kMeshcoreCa1Bit, false, 0},
+    {"meshcore-ca-2", "meshcore-ca-2", "mqtt2.meshcore.ca", "wss://mqtt2.meshcore.ca:443/mqtt",
+     kMeshcoreCa2Bit, false, 0},
     {"custom", "custom", nullptr, nullptr, kCustomBit, true, 0},
 };
 
@@ -205,6 +205,10 @@ const char* MQTTUplink::brokerCaCert(const BrokerSpec& spec) {
     // eastmesh.au switched from Let's Encrypt to a Google Trust Services WE1
     // wildcard cert (July 2026); trust both so a switch back doesn't brick uplinks.
     return mqtt_ca_certs::kCombinedPem;  // ISRG Root X1 + GTS WE1
+  }
+  if (spec.bit == kMeshcoreCa1Bit || spec.bit == kMeshcoreCa2Bit)
+  {
+    return mqtt_ca_certs::kEastmeshIsrgRootX1Pem; // ISRG Root X1 only needed for Canada
   }
   // waev (mqtt.waev.app) presents a Google Trust Services WE1 chain, same issuer as LetsMesh.
   return mqtt_ca_certs::kLetsmeshWe1Pem;  // Google Trust Services WE1
