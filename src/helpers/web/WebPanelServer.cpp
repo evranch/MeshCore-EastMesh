@@ -2777,8 +2777,8 @@ const char kWebPanelAppHtml[] PROGMEM = R"HTML(
       { key:"meshmapper", input:"mqttMeshmapper", label:"MeshMapper", set:"set mqtt.meshmapper" },
       { key:"waev", input:"mqttWaev", label:"Waev", set:"set mqtt.waev" },
       { key:"custom", input:"mqttCustom", label:"Custom", set:"set mqtt.custom", custom:true },
-      { key:"meshcore-ca-1", input:"mqttCA-1", label:"Meshcore Canada 1", set:"set mqtt.meshcore-ca-1" },
-      { key:"meshcore-ca-2", input:"mqttCA-2", label:"Meshcore Canada 2", set:"set mqtt.meshcore-ca-2" }
+      { key:"ca-1", input:"mqttca-1", label:"Meshcore Canada 1", set:"set mqtt.ca-1" },
+      { key:"ca-2", input:"mqttca-2", label:"Meshcore Canada 2", set:"set mqtt.ca-2" }
     ];
     const MQTT_SLOT_IDS = ["mqttPrimaryBroker", "mqttSecondaryBroker"];
     function brokerByKey(key) {
@@ -3306,8 +3306,8 @@ const char kWebPanelAppHtml[] PROGMEM = R"HTML(
           () => loadBrokerState("get mqtt.eastmesh-au", "mqttEastmeshAu", quiet),
           () => loadBrokerState("get mqtt.meshmapper", "mqttMeshmapper", quiet),
           () => loadBrokerState("get mqtt.waev", "mqttWaev", quiet),
-          () => loadBrokerState("get mqtt.meshcore-ca-1", "mqttCA-1", quiet),
-          () => loadBrokerState("get mqtt.meshcore-ca-2", "mqttCA-2", quiet),
+          () => loadBrokerState("get mqtt.ca-1", "mqttca-1", quiet),
+          () => loadBrokerState("get mqtt.ca-2", "mqttca-2", quiet),
           () => loadBrokerState("get mqtt.custom", "mqttCustom", quiet),
           () => loadCustomEndpoint(quiet),
           () => loadCustomTransport(quiet),

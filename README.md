@@ -165,8 +165,8 @@ uv run --group docs zensical build
   - `eastmesh-au`
   - `meshmapper`
   - `waev`
-  - `meshcore-ca-1`
-  - `meshcore-ca-2`
+  - `ca-1`
+  - `ca-2`
 - WSS transport at `/mqtt`
 - JWT auth using the device identity
 - CLI controls for:

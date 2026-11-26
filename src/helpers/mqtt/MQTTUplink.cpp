@@ -133,9 +133,9 @@ const MQTTUplink::BrokerSpec MQTTUplink::kBrokerSpecs[kBrokerCount] = {
     // waev enforces a shorter max token lifetime than the curated default; match its documented config.
     {"waev", "waev", "mqtt.waev.app", "wss://mqtt.waev.app:443/mqtt", kWaevBit, false, 3600},
     // Retired nodes swapped out for Meshcore Canada
-    {"meshcore-ca-1", "meshcore-ca-1", "mqtt1.meshcore.ca", "wss://mqtt1.meshcore.ca:443/mqtt",
+    {"ca-1", "ca-1", "mqtt1.meshcore.ca", "wss://mqtt1.meshcore.ca:443/mqtt",
      kMeshcoreCa1Bit, false, 0},
-    {"meshcore-ca-2", "meshcore-ca-2", "mqtt2.meshcore.ca", "wss://mqtt2.meshcore.ca:443/mqtt",
+    {"ca-2", "ca-2", "mqtt2.meshcore.ca", "wss://mqtt2.meshcore.ca:443/mqtt",
      kMeshcoreCa2Bit, false, 0},
     {"custom", "custom", nullptr, nullptr, kCustomBit, true, 0},
 };
@@ -208,7 +208,7 @@ const char* MQTTUplink::brokerCaCert(const BrokerSpec& spec) {
   }
   if (spec.bit == kMeshcoreCa1Bit || spec.bit == kMeshcoreCa2Bit)
   {
-    return mqtt_ca_certs::kEastmeshIsrgRootX1Pem; // ISRG Root X1 only needed for Canada
+    return mqtt_ca_certs::kCombinedPem; // Trust both as well
   }
   // waev (mqtt.waev.app) presents a Google Trust Services WE1 chain, same issuer as LetsMesh.
   return mqtt_ca_certs::kLetsmeshWe1Pem;  // Google Trust Services WE1
