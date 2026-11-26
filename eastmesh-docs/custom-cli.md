@@ -69,10 +69,10 @@ No-argument `get` commands must be entered exactly as shown.
 - `set mqtt.meshmapper on|off`
 - `get mqtt.waev`
 - `set mqtt.waev on|off`
-- `get mqtt.letsmesh-eu` (retired)
-- `set mqtt.letsmesh-eu on|off` (retired)
-- `get mqtt.letsmesh-us` (retired)
-- `set mqtt.letsmesh-us on|off` (retired)
+- `get mqtt.meshcore-ca-1`
+- `set mqtt.meshcore-ca-1 on|off`
+- `get mqtt.meshcore-ca-2`
+- `set mqtt.meshcore-ca-2 on|off`
 - `get mqtt.custom`
 - `set mqtt.custom on|off`
 - `get mqtt.custom.host`
@@ -92,7 +92,7 @@ Notes:
 - a maximum of two MQTT brokers can be enabled at once
 - `meshmapper` is the curated global broker (`wss://mqtt.meshmapper.net:443/mqtt`); like `eastmesh-au` it uses WSS, verified TLS, and MeshCore JWT auth with the broker host as the token audience
 - `waev` is a curated broker (`wss://mqtt.waev.app:443/mqtt`); like `eastmesh-au` it uses WSS, verified TLS, and MeshCore JWT auth with the broker host as the token audience, but enforces a 1-hour auth token lifetime (the firmware mints a shorter-lived token for it automatically)
-- `letsmesh-eu` and `letsmesh-us` are retired (LetsMesh is no longer maintained) and off by default; any saved selections are cleared once on upgrade, though the endpoints stay selectable for legacy use
+- `meshcore-ca-1` and `meshcore-ca-2` enable observer use in Canada
 - if `mqtt.iata` is `UNSET`, enabled MQTT brokers will not connect
 - custom MQTT uses the configured username and password, not JWT authentication
 - custom MQTT defaults to TCP; set `mqtt.custom.transport wss` for MQTT over secure WebSockets using the fixed `/mqtt` websocket path and the ESP-IDF x509 root CA bundle
